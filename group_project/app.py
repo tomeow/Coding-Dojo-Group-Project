@@ -1,6 +1,7 @@
-import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect
+from mysqlconnection import MySQLConnector
 import stripe
+import os
 
 
 stripe_keys = {
@@ -11,15 +12,21 @@ stripe_keys = {
 stripe.api_key = stripe_keys['secret_key']
 
 app = Flask(__name__)
+app.secret_key = "DonationsAreGreatlyAppreciated8282"
+mysql = MySQLConnector('mydb')
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
-  return render_template('index.html', key=stripe_keys['publishable_key'])
+    total = mysql.fetch("SELECT TRUNCATE(SUM(amount)/100, 2) AS sofar FROM donations")
+    recent = mysql.fetch("SELECT name FROM donations ORDER BY donations.id DESC LIMIT 3")
+    return render_template('index.html', key=stripe_keys['publishable_key'], total=total, recent=recent)
 
 @app.route('/charge', methods=['POST'])
 def charge():
     # Amount in cents
-    amount = request.form['amount']
+    amount = request.form['amount']+'00'
+    session['amount'] = request.form['amount']
+    session['name'] = request.form['name']
 
     customer = stripe.Customer.create(
         email='customer@example.com',
@@ -33,8 +40,9 @@ def charge():
         description='Flask Charge'
     )
 
-    return render_template('charge.html', amount=amount, customer=customer)
-
+    query = "INSERT INTO donations (amount, name) VALUES ('{}', '{}')".format(amount, session['name'])
+    mysql.run_mysql_query(query)
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)

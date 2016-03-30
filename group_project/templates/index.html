@@ -14,22 +14,30 @@
     <title> Group Project - index.html </title>
 </head>
 <body>
-    {% extends "layout.html" %}
-    {% block content %}
+    
     <div id = "container">
         <h1> Support the cause!!!</h1>
 
-        <h3> Please select the amount of your donation.
+        <h2>Recent Donators:</h2>
+        {% for recent in recent: %}
+            Thank you {{recent.name}} for your donation! <br>
+        {% endfor %}
+
+        {% extends "layout.html" %}
+        {% block content %}
+
+        <h3> Please select the amount of your donation.</h3>
         <form action="/charge" method="post">
             <article>
                 <label>
-                    <input type="text" name="amount">
+                    $<input type="text" name="amount">.00
+                    <input type="text" name="name">Name
                 </label>
             </article>
 
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="{{ key }}"
-            data-description="A Flask Charge"
+            data-description="Donations"
             data-amount="amount"
             data-locale="auto"></script>
         </form>
