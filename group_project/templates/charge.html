@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Success!</title>
+</head>
+<body>
+{{amount}}
+{% for data in customer: %}
+  {data['name']}
+{% endfor %}
+
+{{customer}}
+
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Thanks, you donated <strong>$1.00</strong>!</h2>
+{% endblock %}
+
+
+</body>
+
+</html>
