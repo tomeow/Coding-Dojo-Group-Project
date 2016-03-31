@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='group_project.css') }}"> -->
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="static/group_project.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title> Group Project - index.html </title>
+</head>
+<body>
+
+    <div class = "container" >
+        <div class='row'>
+            <div class='Green col-sm-12'>TEST</div>
+            <div class='DarkerGR col-sm-12'>TEST</div>
+            <div class='DarkestGR col-sm-12'>TEST</div>
+        </div>
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="#">Donation Home</a></li>
+            <li role="presentation"><a href="http://www.codingdojo.com/" target="_blank">Coding Dojo</a></li>
+            <li role="presentation"><a href="http://www.codingdojo.com/contact-us" target="_blank">Messages</a></li>
+        </ul>
+
+        <div id="main">
+            <h3> MAKE A GIFT TO CODING DOJO STUDENTS</h3>
+            <p> <span class = 'stars'>We have raised </span>${{total[0]['sofar']}} <span class = 'stars'> so far!</span></p>
+
+
+
+           <!--  <h3> What should I write here?.</h3> -->
+            <form action="/charge" method="post">
+                <div class="input-group">
+                    <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;$&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <input name = "amount" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-addon">.00</span>
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2">Name</span>
+                    <input type="text" class="form-control" name = "name" placeholder="" aria-describedby="sizing-addon2">
+                </div>
+
+
+                <!-- Original amount & Name boxes -->
+                <!-- <article>
+                    <label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<input type="text" class ='box' name="amount">.00</br>
+                        Name: <input type="text" name="name" class ='box'>
+                    </label>
+                </article>-->
+
+                <!--******Below is to test '/charge' ********* -->
+                <!-- <input type='submit' value = "Pay with Card" class="btn btn-default btn-lg"> -->
+
+
+
+                <!--******Use below script for the presentation ********* -->
+
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="{{ key }}"
+                data-description="Donations"
+                data-amount="amount"
+                data-locale="auto"></script>
+
+            </form>
+            <h3>Recent Donators:</h3>
+                {% for recent in recent: %}
+                    <span class = 'stars'>Thank you</span>  {{recent.name}} <span class = 'stars'>for your donation! </span><br>
+                {% endfor %}
+
+                {% extends "layout.html" %}
+                {% block content %}
+
+        </div>
+        <div id ="main" class = 'image.box'>
+            <img src="http://www.traceycrouch.org/sites/www.traceycrouch.org/files/girls_coding_0.jpg" width="300" height="200">
+            <img src="http://www.abouttimemagazine.co.uk/wp-content/uploads/2014/12/nutribox-photo-2.jpg" width="300" height="250">
+
+        </div>
+
+        <div class='row'>
+            <div class='DarkestGR col-sm-12'>TEST</div>
+            <div class='DarkerGR col-sm-12'>TEST</div>
+            <div class='Green col-sm-12'>TEST</div>
+        </div>
+    </div>
+    {% endblock %}
+
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename="bower_components/Materialize/dist/js/materialize.min.js") }}"></script>
+</body>

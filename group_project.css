@@ -1,0 +1,90 @@
+h1, h2, h3, h4, h5, p {
+  font-family: Hiragino Kaku Gothic Pro;
+   /*font-family: 'Abril Fatface', cursive;*/
+/*  font-family: 'Lato', cursive;*/
+   /*font-family: 'Chivo', cursive;*/
+  /* font-family: 'Vollkorn', cursive; */
+}
+
+.container{
+  width: 900px;
+  height: 900px;
+  background: rgba(164,179,87,1);
+  background-image: url("wood-deck-01.jpg");
+  display: inline-block;
+  vertical-align: top;
+
+
+  color: grey;
+
+}
+
+#main{
+  width: 350px;
+  height: 500px;
+  margin: 40px;
+  padding: 10px;
+  display: inline-block;
+  vertical-align: top;
+  overflow: auto;
+
+}
+
+.image_box{
+  display: inline-block;
+  vertical-align: top;
+
+}
+
+.box{
+
+}
+
+
+
+.Green{
+  width: 100%;
+  height: 20px;
+  background-color: #336600;
+  color: #336600
+}
+
+.DarkerGR{
+  width: 100%;
+  height: 20px;
+  background-color: #669900;
+  color: #669900;
+}
+
+.DarkestGR{
+  width: 100%;
+  height: 20px;
+  background-color: #FFCC00;
+  color: #FFCC00;
+}
+
+
+.outter-div{
+    overflow:hidden;
+}
+
+.textarea{
+    overflow:scroll;
+    height: 200px;
+}
+
+.gain{
+    color:green;
+}
+
+.loss{
+    color:red;
+}
+
+/* body{ */
+/*   background-color:red; */
+/* } */
+
+/* p{ */
+/*   font-family: 'Vollkorn', cursive; */
+/* } */

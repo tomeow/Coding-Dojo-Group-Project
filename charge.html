@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='group_project.css') }}"> -->
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="static/group_project.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Success!</title>
+</head>
+<body>
+    <div class = "container" >
+        <div class='row'>
+            <div class='Green col-sm-12'>TEST</div>
+            <div class='DarkerGR col-sm-12'>TEST</div>
+            <div class='DarkestGR col-sm-12'>TEST</div>
+        </div>
+
+        {{amount}}
+        {% for data in customer: %}
+          {data['name']}
+        {% endfor %}
+
+        {{customer}}
+
+        {% extends "layout.html" %}
+        {% block content %}
+          <h2>Thanks!!  you donated <strong>$1.00</strong>!</h2>
+        {% endblock %}
+
+        <img src= "http://deliveringhappiness.com/wp-content/uploads/2011/10/happyball.jpg" width="400" height="600">
+
+        <div class='row'>
+            <div class='DarkestGR col-sm-12'>TEST</div>
+            <div class='DarkerGR col-sm-12'>TEST</div>
+            <div class='Green col-sm-12'>TEST</div>
+        </div>
+    </div>
+
+<!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename="bower_components/Materialize/dist/js/materialize.min.js") }}"></script>
+
+</body>
+
+</html>
+Status API Training Shop Blog About
