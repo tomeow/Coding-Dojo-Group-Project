@@ -24,23 +24,17 @@
         </div>
         <ul class="nav nav-pills">
             <li role="presentation" class="active"><a href="#">Donation Home</a></li>
-            <li role="presentation"><a href="#">Coding Dojo</a></li>
-            <li role="presentation"><a href="#">Messages</a></li>
+            <li role="presentation"><a href="http://www.codingdojo.com/" target="_blank">Coding Dojo</a></li>
+            <li role="presentation"><a href="http://www.codingdojo.com/contact-us" target="_blank">Messages</a></li>
         </ul>
 
         <div id="main">
-            <h2> Support the cause!!!</h2>
-            We have raised ${{total[0]['sofar']}} so far!
+            <h3> MAKE A GIFT TO CODING DOJO STUDENTS</h3>
+            <p> <span class = 'stars'>We have raised </span>${{total[0]['sofar']}} <span class = 'stars'> so far!</span></p>
 
-            <h2>Recent Donators:</h2>
-            {% for recent in recent: %}
-                Thank you {{recent.name}} for your donation! <br>
-            {% endfor %}
 
-            {% extends "layout.html" %}
-            {% block content %}
 
-            <h3> What should I write here?.</h3>
+           <!--  <h3> What should I write here?.</h3> -->
             <form action="/charge" method="post">
                 <div class="input-group">
                     <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;$&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -52,6 +46,7 @@
                     <span class="input-group-addon" id="sizing-addon2">Name</span>
                     <input type="text" class="form-control" name = "name" placeholder="" aria-describedby="sizing-addon2">
                 </div>
+
 
                 <!-- Original amount & Name boxes -->
                 <!-- <article>
@@ -68,13 +63,21 @@
 
                 <!--******Use below script for the presentation ********* -->
 
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="{{ key }}"
                 data-description="Donations"
                 data-amount="amount"
                 data-locale="auto"></script>
 
             </form>
+            <h3>Recent Donators:</h3>
+                {% for recent in recent: %}
+                    <span class = 'stars'>Thank you</span>  {{recent.name}} <span class = 'stars'>for your donation! </span><br>
+                {% endfor %}
+
+                {% extends "layout.html" %}
+                {% block content %}
+
         </div>
         <div id ="main" class = 'image.box'>
             <img src="http://www.traceycrouch.org/sites/www.traceycrouch.org/files/girls_coding_0.jpg" width="300" height="200">
